@@ -12,7 +12,6 @@ namespace ControleProdutos.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        //teste
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
