@@ -17,8 +17,6 @@ namespace ControleProdutos.Controllers
         {
             _logger = logger;
         }
-        //teste
-        //asdfasdfds
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
