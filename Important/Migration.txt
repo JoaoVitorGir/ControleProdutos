@@ -1,0 +1,12 @@
+Para criar uma nova migration segue os passos;
+
+1- Criar uma Model da tabela
+2- Adicionar a tabela no ControleProdutosContext.cs
+3- Criar o controlador
+4- Executar o comando no Console do Gerenciador de Pacotes: {A: Add-Migration [NomeDaMigracao]
+                                                             B: Update-Database
+                                                             C: se quiser mais informações add no final da cada comando -Verbose}
+
+
+//não sei porque mas não criou sozinho a tabela __EFMigrationsHistory crie na mão para funcionar e tem que colocar aspas dupla pra funcionar
+EX: select * from ControleProdutos."__EFMigrationsHistory"
