@@ -8,34 +8,29 @@ namespace ControleProdutos.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProdutoController : ControllerBase
+    public class UnidadeController : ControllerBase
     {
+        //cria instancia para conexão com o banco de dados
         private readonly ControleProdutosContext _context;
-
-        public ProdutoController(ControleProdutosContext context)
+        public UnidadeController(ControleProdutosContext context)
         {
             _context = context;
         }
 
+        //retorna uma lista de todas as unidades da tabela unidade
         [HttpGet]
-        public async Task<List<Produto>> GetProdutos()
+        public async Task<List<Unidade>> GetUnidades()
         {
-            var lista = new List<Produto>();
+            var lista = new List<Unidade>();
             try
             {
-                lista = await _context.Produto.ToListAsync();
+                lista = await _context.Unidade.ToListAsync();
             }catch (Exception ex)
             {
-                Console.WriteLine($"Erro ao consultar produto [GetProduto] {ex.Message}");
+                Console.WriteLine($"Erro ao consultar unidades [GetUnidade] {ex.Message}");
             }
             return lista;
         }
-
-        //[HttpPost]
-
-        //[HttpPut]
-
-        //[HttpDelete]
 
     }
 }

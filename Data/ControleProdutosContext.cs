@@ -8,7 +8,9 @@ namespace ControleProdutos.Data
         public ControleProdutosContext(DbContextOptions<ControleProdutosContext> options): base(options) {
         }
 
+        //Cria as tabelas nas migration e para usar nos conrollers 
         public DbSet<Produto> Produto { get; set; }
+        public DbSet<Unidade> Unidade { get; set; }
 
     }
 }
