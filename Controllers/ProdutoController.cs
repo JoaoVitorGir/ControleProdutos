@@ -35,7 +35,19 @@ namespace ControleProdutos.Controllers
 
         //[HttpPut]
 
-        //[HttpDelete]
+        [HttpDelete("Delete/{id}")]
+        public string deleteProduto(int id)
+        {
+            string teste = "Produto não excluído!";
+            var produto = _context.Produto.Find(id);
+            _context.Produto.Remove(produto);
+            var valor = _context.SaveChanges();
+            if (valor == 1)
+            {
+                teste = "Produto excluído";
+            }
+            return teste;
+        }
 
     }
 }
