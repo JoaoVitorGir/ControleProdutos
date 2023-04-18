@@ -1,10 +1,23 @@
 using Microsoft.EntityFrameworkCore;
 using ControleProdutos.Data;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Obtem o nome do computador
+var computerName = Environment.MachineName;
+
 // Add services to the container.
-var stringConexao = builder.Configuration.GetConnectionString("Postgres_Unidavi");
+var stringConexao = "";
+
+if (computerName == "JOAO_GIRARDI")
+{
+    stringConexao = builder.Configuration.GetConnectionString("Postgres_Unidavi_Joao");
+}
+
+//add um if aqui com igual o de cima so mudando o nome do pc e add a tua string de conexao bota break ponte para saber o nome do teu pc
+
+
 builder.Services.AddDbContext<ControleProdutosContext>(x => x.UseNpgsql(stringConexao));
 
 builder.Services.AddControllers();
