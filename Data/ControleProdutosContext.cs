@@ -11,6 +11,7 @@ namespace ControleProdutos.Data
         //Cria as tabelas nas migration e para usar nos conrollers 
         public DbSet<Produto> Produto { get; set; }
         public DbSet<Unidade> Unidade { get; set; }
+        public DbSet<LogErros> LogErros { get; set; }
 
     }
 }
