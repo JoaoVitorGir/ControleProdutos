@@ -3,12 +3,12 @@ using ControleProdutos.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ControleProdutos.Generic;
 
 namespace ControleProdutos.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
+ 
     public class ProdutoController : ControllerBase
     {
         private readonly ControleProdutosContext _context;
@@ -98,7 +98,7 @@ namespace ControleProdutos.Controllers
                 }
             }
             catch(Exception ex) {
-                new LogUtils().AddLogErro(_context, "Teste", "Teste");
+                //new LogUtils().AddLogErro(_context, "Teste", "Teste");
                 Console.WriteLine($"Erro ao alterar um estado. Exceção: {ex.Message}");
             }
             return res;
