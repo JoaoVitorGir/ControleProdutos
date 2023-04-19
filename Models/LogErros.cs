@@ -15,6 +15,8 @@ namespace ControleProdutos.Models
         [Required(ErrorMessage = "O campo ErrDesc é obrigatorio e não pode ser null ou estar vazio")]
         public string ErrDesc { get; set; }
 
+        public string LocErro { get; set; }
+
         [Required(ErrorMessage = "O campo ErrDate é obrigatorio")]
         public DateTime ErrDate { get; set; }  
     }

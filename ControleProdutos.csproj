@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Generic\" />
     <Folder Include="Important\" />
   </ItemGroup>
 
