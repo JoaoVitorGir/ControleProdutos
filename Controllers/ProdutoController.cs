@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ControleProdutos.Generic;
+using System.Data;
 
 namespace ControleProdutos.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
+ 
     public class ProdutoController : ControllerBase
     {
         private readonly ControleProdutosContext _context;
@@ -27,29 +29,30 @@ namespace ControleProdutos.Controllers
                 lista = await _context.Produto.ToListAsync();
             }catch (Exception ex)
             {
-                Console.WriteLine($"Erro ao consultar produto [GetProduto] {ex.Message}");
+                new Log().GravarErro("Erro ao buscar produtos", ex.InnerException.ToString(), "GetProdutos");
             }
+
             return lista;
         }
 
 
         [HttpPost]
-        public async Task<string> postProduto(Produto newProduto)
+        public async Task<string> PostProduto(Produto newProduto)
         {
             string res = "Erro ao incluir produto";
             try
             {
                 await _context.Produto.AddAsync(newProduto);
                 var valor = await _context.SaveChangesAsync();
-
+                await _context.SaveChangesAsync();
                 if (valor == 1)
                 {
-                    res = "Estado incluido!";
+                    res = "Produto incluido!";
                 }
             }
             catch(Exception ex)
             {
-                
+                new Log().GravarErro(res, ex.InnerException.ToString(), "PostProduto");
             }
 
             return res;
@@ -57,13 +60,13 @@ namespace ControleProdutos.Controllers
 
 
         [HttpPut]
-        public async Task<string> putProduto(Produto newProduto)
+        public async Task<string> PutProduto(Produto newProduto)
         {
             string res = "Erro ao alterar produto não alterado!";
             try
             {
                 _context.Produto.Update(newProduto);
-                var valor = _context.SaveChanges();
+                var valor = await _context.SaveChangesAsync();
                 if (valor == 1)
                 {
                     res = "Produto alterado!";
@@ -71,14 +74,15 @@ namespace ControleProdutos.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro ao alterar um produto. Exceção: {ex.Message}");
+                new Log().GravarErro(res, ex.InnerException.ToString(), "PutProduto");
             }
+
             return res;
         }
 
 
         [HttpDelete("Delete/{id}")]
-        public string deleteProduto(int id)
+        public string DeleteProduto(int id)
         {
             string res = "Produto não excluído!";
             try
@@ -98,9 +102,9 @@ namespace ControleProdutos.Controllers
                 }
             }
             catch(Exception ex) {
-                new LogUtils().AddLogErro(_context, "Teste", "Teste");
-                Console.WriteLine($"Erro ao alterar um estado. Exceção: {ex.Message}");
+                new Log().GravarErro(res, ex.InnerException.ToString(), "DeleteProduto");
             }
+
             return res;
         }
 

@@ -1,0 +1,5 @@
+Para tratamento de erros foi criada a classe Log aonde dentro dela contém uma função GravaErro que deve ser usada para gravar os erros de execução.
+1 - adicionar o using ControleProdutos.Generic
+
+2 - new Log().GravarErro("Erro ao buscar produtos", ex.InnerException.ToString(), "GetProdutos");
+2 - new Log().GravarErro({Descricao Simpres do erro }, {maiores detalhes do erro }, {nome do metodo que aconteceu o erro});

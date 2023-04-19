@@ -3,6 +3,7 @@ using ControleProdutos.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ControleProdutos.Generic;
 
 namespace ControleProdutos.Controllers
 {
@@ -27,7 +28,7 @@ namespace ControleProdutos.Controllers
                 lista = await _context.Unidade.ToListAsync();
             }catch (Exception ex)
             {
-                Console.WriteLine($"Erro ao consultar unidades [GetUnidade] {ex.Message}");
+                new Log().GravarErro("Erro ao buscar unidade", ex.InnerException.ToString(), "GetUnidades");
             }
             return lista;
         }
