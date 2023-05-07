@@ -13,6 +13,9 @@ var stringConexao = "";
 if (computerName == "JOAO_GIRARDI")
 {
     stringConexao = builder.Configuration.GetConnectionString("Postgres_Local_Joao");
+} else
+{
+    stringConexao = builder.Configuration.GetConnectionString("Postgres_Local_Welson");
 }
 
 //add um if aqui com igual o de cima so mudando o nome do pc e add a tua string de conexao bota break ponte para saber o nome do teu pc
